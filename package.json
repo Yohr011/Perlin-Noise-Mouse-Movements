@@ -1,0 +1,19 @@
+{
+  "name": "perlin-noise-mouse-movements",
+  "version": "1.0.0",
+  "description": "Adapting p5.js's Perlin noise algorithm to generate random mouse movement patterns",
+  "main": "renderMact.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yohr011",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yohr011/Perlin-Noise-Mouse-Movements"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "path": "^0.12.7"
+  }
+}
