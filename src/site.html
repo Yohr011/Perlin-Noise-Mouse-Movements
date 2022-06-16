@@ -10,6 +10,13 @@
         <!-- Plotly chart will be drawn inside this DIV -->
     </div>
     <script>
+        const start_ts = Date.now();
+        const getRandomInt = (min, max) => {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        };
+
         const PERLIN_YWRAPB = 4,
             PERLIN_YWRAP = 1 << PERLIN_YWRAPB,
             PERLIN_ZWRAPB = 8,
@@ -102,7 +109,7 @@
         let xoff = 10,
             yoff = 0,
             xsum = Math.random(),
-            ysum = Math.random()
+            ysum = Math.random();
 
         const genMovement = () => {
             let movementData = {
@@ -118,27 +125,52 @@
             return movementData
         }
 
-        const trace0 = {
-            x: genMovement().x,
-            y: genMovement().y,
-            mode: 'markers',
-            type: 'scatter',
+        // let use = genMovement(),
+        // t = Date.now() - start_ts + getRandomInt(500, 1250);
+
+        // let c = '';
+
+        // for (let i = 0; i < use.x.length; i++) {
+        //     t += getRandomInt(12, 31);
+        //     c = c + i + ',' + 1 + ',' + t + ',' + use.x[i] + ',' + use.y[i];
+        //     c += ';';
+        // };
+
+        const traces = {
+            trace0: {
+                x: genMovement().x,
+                y: genMovement().y,
+                mode: 'markers',
+                type: 'scatter',
+            },
+            trace1: {
+                x: genMovement().x,
+                y: genMovement().y,
+                mode: 'markers',
+                type: 'scatter'
+            },
+            trace2: {
+                x: genMovement().x,
+                y: genMovement().y,
+                mode: 'markers',
+                type: 'scatter'
+            }
         };
 
-        const trace1 = {
-            x: genMovement().x,
-            y: genMovement().y,
-            mode: 'markers',
-            type: 'scatter'
-        };
+        Plotly.newPlot('myDiv', [traces.trace0, traces.trace1, traces.trace2]);
 
-        const trace2 = {
-            x: genMovement().x,
-            y: genMovement().y,
-            mode: 'markers',
-            type: 'scatter'
-        };
-
-        Plotly.newPlot('myDiv', [trace0, trace1, trace2]);
+        let use = {};
+        for(let i in traces) {
+            use[i] = {};
+            use[i]['x'] = traces[i]['x'];
+            use[i]['y'] = traces[i]['y'];
+            use[i]['str'] = '';
+            for (let j = 0; j < use[i]['x'].length; j++) {
+                t = Date.now() - start_ts + getRandomInt(500, 1250);
+                t += getRandomInt(12, 31);
+                use[i]['str'] = use[i]['str'] + j + ',' + 1 + ',' + t + ',' + use[i]['x'][j] + ',' + use[i]['y'][j];
+                use[i]['str'] += ';';
+            }
+        }
     </script>
 </body>

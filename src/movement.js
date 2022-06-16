@@ -90,6 +90,7 @@ function noise(x, y = 0, z = 0) {
     }
     return r;
 };
+
 let xoff = 10,
     yoff = 0;
 
@@ -126,3 +127,5 @@ const generate = () => {
     };
     return c;
 }
+
+module.exports = generate;
