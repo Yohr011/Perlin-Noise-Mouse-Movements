@@ -1,4 +1,3 @@
-//* Adapted from https://github.com/processing/p5.js/blob/main/src/math/noise.js
 const start_ts = Date.now();
 
 const PERLIN_YWRAPB = 4,
@@ -14,6 +13,7 @@ const scaled_cosine = i => 0.5 * (1.0 - Math.cos(i * Math.PI));
 
 let perlin; // will be initialized lazily by noise() or noiseSeed()
 
+//* Noise function adapted from https://github.com/processing/p5.js/blob/main/src/math/noise.js
 function noise(x, y = 0, z = 0) {
     if (perlin == null) {
         perlin = new Array(PERLIN_SIZE + 1);
